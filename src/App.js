@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [quote , setQuote]= useState("")
+
+  const getQuotes = () => {
+    axios.get("https://api.adviceslip.com/advice")
+    .then((response) => {
+      console.log(response);
+      setQuote(response.data.slip.advice)
+      
+    })
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className="App" >
+    <div className='heading'>
+      <h2 className="">Quote</h2>
     </div>
+    
+    <div className='box'>
+     <h1 className='quote' > {quote}  </h1>
+    <button className='getQuotes' onClick={getQuotes} >Press me !</button>
+
+     </div>
+
+    </div>
+    </>
   );
 }
 
