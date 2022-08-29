@@ -20,7 +20,7 @@ function App() {
     <>
     <div className="App" >
     <div className='heading'>
-      <h2 className="">Quote</h2>
+      <h2 className="heading">Quote</h2>
     </div>
     
     <div className='box'>
